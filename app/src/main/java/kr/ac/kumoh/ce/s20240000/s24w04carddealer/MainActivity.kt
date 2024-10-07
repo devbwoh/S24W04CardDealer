@@ -13,7 +13,7 @@ import kotlin.random.Random
 class MainActivity : AppCompatActivity() {
     private lateinit var main: ActivityMainBinding
 
-    //@SuppressLint("DiscouragedApi")
+    @SuppressLint("DiscouragedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
