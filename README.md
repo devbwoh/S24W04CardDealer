@@ -13,5 +13,5 @@ https://nano5.notion.site/Week06-Resource-10adaf211d4280d0b93fdda348621bc8?pvs=4
 https://nano5.notion.site/Week07-ViewModel-118daf211d42800c99e6ef416c03db0c?pvs=4
 
 <img src="https://github.com/user-attachments/assets/707ae5c9-908c-40cb-92c7-ea35cb994f86" width="200">
-![image](https://github.com/user-attachments/assets/707ae5c9-908c-40cb-92c7-ea35cb994f86|width=200)
 
+![image](https://github.com/user-attachments/assets/a7132672-74ce-477d-a179-89d3901ae160)
