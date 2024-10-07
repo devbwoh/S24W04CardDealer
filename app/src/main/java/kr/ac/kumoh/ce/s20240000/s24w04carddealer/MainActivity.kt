@@ -16,6 +16,9 @@ class MainActivity : AppCompatActivity() {
     @SuppressLint("DiscouragedApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        Log.i("Lifecycle!!!", "onCreate")
+
         enableEdgeToEdge()
         //setContentView(R.layout.activity_main)
         main= ActivityMainBinding.inflate(layoutInflater)
@@ -62,5 +65,35 @@ class MainActivity : AppCompatActivity() {
             else -> "error"
         }
         return "c_${number}_of_${shape}"
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.i("Lifecycle!!!", "onStart")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.i("Lifecycle!!!", "onResume")
+    }
+
+    override fun onPause() {
+        super.onPause()
+        Log.i("Lifecycle!!!", "onPause")
+    }
+
+    override fun onStop() {
+        super.onStop()
+        Log.i("Lifecycle!!!", "onStop")
+    }
+
+    override fun onRestart() {
+        super.onRestart()
+        Log.i("Lifecycle!!!", "onRestart")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.i("Lifecycle!!!", "onDestroy")
     }
 }
