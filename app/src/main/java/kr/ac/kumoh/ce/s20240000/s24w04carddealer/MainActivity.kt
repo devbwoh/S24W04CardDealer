@@ -7,6 +7,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.lifecycle.ViewModelProvider
 import kr.ac.kumoh.ce.s20240000.s24w04carddealer.databinding.ActivityMainBinding
 import kotlin.random.Random
 
@@ -17,28 +18,36 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-//        Log.i("Lifecycle!!!", "onCreate")
-
         enableEdgeToEdge()
-        //setContentView(R.layout.activity_main)
-        main= ActivityMainBinding.inflate(layoutInflater)
+
+        main = ActivityMainBinding.inflate(layoutInflater)
         setContentView(main.root)
 
+        val model = ViewModelProvider(this)[CardViewModel::class.java]
+
+        val res = IntArray(5)
+
+        model.cards.forEachIndexed { index, num ->
+            res[index] = resources.getIdentifier(
+                getCardName(num),
+                "drawable",
+                packageName
+            )
+        }
+
+        main.imgCard1.setImageResource(res[0])
+        main.imgCard2.setImageResource(res[1])
+        main.imgCard3.setImageResource(res[2])
+        main.imgCard4.setImageResource(res[3])
+        main.imgCard5.setImageResource(res[4])
+
+
         main.btnDeal.setOnClickListener {
-            val c = IntArray(5)
-            val res = IntArray(5)
+            model.shuffle()
 
-            //for (i in 0..4)
-            //for (i in 0 until 5)
-            //for (i in 0 until c.size)
-            for (i in c.indices) {
-                c[i] = Random.nextInt(52)
-
-                Log.i("Test", "${c[i]} : " +
-                        "${getCardName(c[i])}")
-
-                res[i] = resources.getIdentifier(
-                    getCardName(c[i]),
+            model.cards.forEachIndexed { index, num ->
+                res[index] = resources.getIdentifier(
+                    getCardName(num),
                     "drawable",
                     packageName
                 )
@@ -77,34 +86,4 @@ class MainActivity : AppCompatActivity() {
         }
         return "c_${number}_of_${shape}"
     }
-//
-//    override fun onStart() {
-//        super.onStart()
-//        Log.i("Lifecycle!!!", "onStart")
-//    }
-//
-//    override fun onResume() {
-//        super.onResume()
-//        Log.i("Lifecycle!!!", "onResume")
-//    }
-//
-//    override fun onPause() {
-//        super.onPause()
-//        Log.i("Lifecycle!!!", "onPause")
-//    }
-//
-//    override fun onStop() {
-//        super.onStop()
-//        Log.i("Lifecycle!!!", "onStop")
-//    }
-//
-//    override fun onRestart() {
-//        super.onRestart()
-//        Log.i("Lifecycle!!!", "onRestart")
-//    }
-//
-//    override fun onDestroy() {
-//        super.onDestroy()
-//        Log.i("Lifecycle!!!", "onDestroy")
-//    }
 }
