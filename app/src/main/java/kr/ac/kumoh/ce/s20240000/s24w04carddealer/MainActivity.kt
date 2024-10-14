@@ -22,23 +22,33 @@ class MainActivity : AppCompatActivity() {
         main = ActivityMainBinding.inflate(layoutInflater)
         setContentView(main.root)
 
+        val imgCards = arrayOf(
+            main.imgCard1,
+            main.imgCard2,
+            main.imgCard3,
+            main.imgCard4,
+            main.imgCard5,
+        )
+
         val model = ViewModelProvider(this)[CardViewModel::class.java]
         model.cards.observe(this, Observer {
-            val res = IntArray(5)
+            //val res = IntArray(5)
 
             model.cards.value!!.forEachIndexed { index, num ->
-                res[index] = resources.getIdentifier(
-                    getCardName(num),
-                    "drawable",
-                    packageName
+                imgCards[index].setImageResource(
+                    resources.getIdentifier(
+                        getCardName(num),
+                        "drawable",
+                        packageName
+                    )
                 )
             }
-
-            main.imgCard1.setImageResource(res[0])
-            main.imgCard2.setImageResource(res[1])
-            main.imgCard3.setImageResource(res[2])
-            main.imgCard4.setImageResource(res[3])
-            main.imgCard5.setImageResource(res[4])
+//
+//            main.imgCard1.setImageResource(res[0])
+//            main.imgCard2.setImageResource(res[1])
+//            main.imgCard3.setImageResource(res[2])
+//            main.imgCard4.setImageResource(res[3])
+//            main.imgCard5.setImageResource(res[4])
         })
 
 
