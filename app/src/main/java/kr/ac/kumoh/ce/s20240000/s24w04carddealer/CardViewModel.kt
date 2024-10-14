@@ -10,12 +10,35 @@ class CardViewModel : ViewModel() {
     val cards: LiveData<IntArray>
         get() = _cards
 
-    fun shuffle() {
-        val newCards = IntArray(5) { 0 }
+//    fun shuffle() {
+//        var num = 0
+//        val newCards = IntArray(5) { 0 }
+//
+//        for (i in newCards.indices) {
+//            // 중복 검사
+//            do {
+//                num = Random.nextInt(52)
+//            } while (newCards.contains(num))
+//            newCards[i] = num
+//        }
+//
+//        // 정렬
+//        newCards.sort()
+//
+//        _cards.value = newCards
+//    }
 
-        for (i in newCards.indices)
-            // TODO: 중복 및 정렬 처리
-            newCards[i] = Random.nextInt(52)
+    fun shuffle() {
+        // var로 변경, size를 0으로 변경
+        var newCards = IntArray(0)
+
+        while (newCards.size < 5) {
+            val num = Random.nextInt(52)
+            if (!newCards.contains(num))
+                newCards = newCards.plus(num)
+        }
+
+        newCards.sort()
 
         _cards.value = newCards
     }
