@@ -2,14 +2,12 @@ package kr.ac.kumoh.ce.s20240000.s24w04carddealer
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.ViewModelProvider
 import kr.ac.kumoh.ce.s20240000.s24w04carddealer.databinding.ActivityMainBinding
-import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
     private lateinit var main: ActivityMainBinding
@@ -27,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         val res = IntArray(5)
 
-        model.cards.forEachIndexed { index, num ->
+        model.cards.value!!.forEachIndexed { index, num ->
             res[index] = resources.getIdentifier(
                 getCardName(num),
                 "drawable",
@@ -45,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         main.btnDeal.setOnClickListener {
             model.shuffle()
 
-            model.cards.forEachIndexed { index, num ->
+            model.cards.value!!.forEachIndexed { index, num ->
                 res[index] = resources.getIdentifier(
                     getCardName(num),
                     "drawable",
